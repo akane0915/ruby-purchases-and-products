@@ -2,7 +2,7 @@ ENV['RACK_ENV'] = 'test'
 
 require 'bundler/setup'
 require 'rubysales'
-
+require 'timecop'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

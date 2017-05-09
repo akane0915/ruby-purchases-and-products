@@ -1,0 +1,11 @@
+<h3>Create a New Purchase</h3>
+
+<form action="/purchases" method="post">
+  <label for="purchase[customer_name]">Customer Name</label>
+  <input type="text" name="purchase[customer_name]" />
+  <% @products.each do |product| %>
+    <label for="products[][id]"><%= product.name %></label>
+    <input type="checkbox" name="products[][id]" value="<%= product.id %>"/>
+  <% end %>
+  <button type="submit">Submit</button>
+</form>

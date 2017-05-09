@@ -1,0 +1,16 @@
+<h1>All Purchases:</h1>
+
+
+<% @purchases.each do |purchase| %>
+<div class="panel panel-default">
+  <div class="panel-heading"><a href='/purchases/<%=purchase.id%>'><%= purchase.customer_name  %></a></div>
+  <div class="panel-body">
+    <h3>Customer Name</h3>
+    <p><%= purchase.customer_name%></p>
+    <h3>Total</h3>
+    <p><%= purchase.total %></p>
+    <h3>Date Purchased</h3>
+    <p><%= purchase.created_at %></p>
+  </div>
+</div>
+<% end %>

@@ -6,8 +6,13 @@ module Rubysales
     belongs_to :purchase
     scope(:unpurchased, -> { where purchase_id: nil })
     validates :name, :description, :price, presence: true
-    validates :name, with: /^[A-Za-z0-9]+$/
+    validates_format_of :name, with: /\A[A-Za-z0-9 ]+\Z/
     validates :price, numericality: true
+    before_validation(:convert_price)
+
+    def convert_price
+      price.to_f
+    end
   end
 
   class Purchase < ActiveRecord::Base
@@ -17,10 +22,8 @@ module Rubysales
       where "created_at BETWEEN '#{start_date.strftime('%Y-%m-%d %H:%M:%S')}'"\
        " AND '#{end_date.strftime('%Y-%m-%d %H:%M:%S')}'"
     end)
-    validates(
-      :customer_name, presence: true, length: { maximum: 50 },
-                      with: /^[A-Za-z0-9]+$/
-    )
+    validates :customer_name, presence: true, length: { maximum: 50 }
+    validates_format_of :customer_name, with: /\A[A-Za-z0-9 ]+\Z/
 
     def total
       products.map(&:price).reduce(:+)

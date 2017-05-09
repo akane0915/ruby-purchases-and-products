@@ -1,0 +1,18 @@
+<h1>All Products:</h1>
+
+
+<% @products.each do |product| %>
+  <div class="panel panel-default col-md-4">
+    <div class="panel-heading"><a href='products/<%=product.id%>'><%= product.name  %></a></div>
+    <div class="panel-body">
+      <h3>Description</h3>
+      <p><%= product.description%></p>
+      <h3>Price</h3>
+      <p><%= product.price%></p>
+      <% unless product.purchase_id.nil? %>
+        <h3>Purchaser</h3>
+        <p><%= product.purchase.customer_name %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

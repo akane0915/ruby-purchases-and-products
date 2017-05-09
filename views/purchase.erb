@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><a href='/purchases/<%=@purchase.id%>'><%= @purchase.customer_name  %></a></div>
+  <div class="panel-body">
+    <h3>Customer Name</h3>
+    <p><%= @purchase.customer_name%></p>
+    <h3>Total</h3>
+    <p><%= @purchase.total %></p>
+    <h3>Date Purchased</h3>
+    <p><%= @purchase.created_at %></p>
+    <h3>Products</h3>
+    <ul>
+    <% @purchase.products.each do |product| %>
+      <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<form action="/purchases/<%= @purchase.id %>" method="post">
+  <input type="hidden" name="_method" value="patch" />
+  <label for="purchase[customer_name]">Name</label>
+  <input type="text" name="purchase[customer_name]" />
+  <% @products.each do |product| %>
+    <label for="product[][id]"><%= product.name %></label>
+    <input type="checkbox" name="product[][id]" value="<%= product.id %>"/>
+  <% end %>
+  <button type="submit">Update Purchase</button>
+</form>
+<form action="/purchases/<%= @purchase.id %>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <button type="submit">Delete Purchase</button>
+</form>

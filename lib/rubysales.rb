@@ -13,5 +13,9 @@ module Rubysales
       where "created_at BETWEEN '#{start_date.strftime('%Y-%m-%d %H:%M:%S')}'"\
        " AND '#{end_date.strftime('%Y-%m-%d %H:%M:%S')}'"
     end)
+
+    def total
+      products.map(&:price).reduce(:+)
+    end
   end
 end

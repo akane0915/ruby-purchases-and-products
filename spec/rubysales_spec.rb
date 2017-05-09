@@ -36,5 +36,17 @@ RSpec.describe Rubysales do
       expect(Rubysales::Purchase.between(DateTime.new(2016, 1, 1), DateTime.new(2017, 3, 1)))
         .to match_array [@test_purchase2, @test_purchase3]
     end
+    describe '#total' do
+      before(:all) do
+        @test_purchase = Rubysales::Purchase.create customer_name: 'Jon Snow'
+        3.times do |i|
+          Rubysales::Product.create name: 'product'+i.to_s, price: rand(50), purchase_id: @test_purchase.id
+        end
+      end
+      it 'returns the total price of products in a purchase' do
+        expected = @test_purchase.products.map(&:price).reduce(:+)
+        expect(@test_purchase.total). to eq expected
+      end
+    end
   end
 end

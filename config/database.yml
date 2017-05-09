@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: rubysales_dev
+test:
+  adapter: postgresql
+  database: rubysales_test

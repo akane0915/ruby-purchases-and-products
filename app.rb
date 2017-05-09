@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'rake'
 require 'sinatra/activerecord/rake'
 require 'pry-byebug'
+require 'rubysales'
 
 if development?
   require 'sinatra/reloader'

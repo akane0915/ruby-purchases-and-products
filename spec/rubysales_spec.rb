@@ -40,7 +40,7 @@ RSpec.describe Rubysales do
       before(:all) do
         @test_purchase = Rubysales::Purchase.create customer_name: 'Jon Snow'
         3.times do |i|
-          Rubysales::Product.create name: 'product'+i.to_s, price: rand(50), purchase_id: @test_purchase.id
+          Rubysales::Product.create name: 'product' + i.to_s, price: rand(50), purchase_id: @test_purchase.id
         end
       end
       it 'returns the total price of products in a purchase' do

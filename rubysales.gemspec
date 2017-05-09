@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['tenebrousedge@gmail.com']
 
   spec.summary       = 'This is a point of sale app for Epicodus\' Ruby course.'
-  spec.homepage      = "https://github.com/tenebrousedge/rubysales"
+  spec.homepage      = 'https://github.com/tenebrousedge/rubysales'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

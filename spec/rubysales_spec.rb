@@ -34,7 +34,7 @@ RSpec.describe Rubysales do
     end
     it 'returns purchases transacted between a start date and end date' do
       expect(Rubysales::Purchase.between(DateTime.new(2016, 1, 1), DateTime.new(2017, 3, 1)))
-      .to match_array [@test_purchase2, @test_purchase3]
+        .to match_array [@test_purchase2, @test_purchase3]
     end
   end
 end

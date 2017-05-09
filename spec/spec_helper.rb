@@ -3,6 +3,7 @@ ENV['RACK_ENV'] = 'test'
 require 'bundler/setup'
 require 'rubysales'
 require 'timecop'
+require 'pry-byebug'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -13,11 +14,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    Rubysales::Product.all.each do |product|
-      product.destroy
-    end
-    Rubysales::Purchase.all.each do |purchase|
-      purchase.destroy
-    end
+    Rubysales::Product.all.each(&:destroy)
+    Rubysales::Purchase.all.each(&:destroy)
   end
 end

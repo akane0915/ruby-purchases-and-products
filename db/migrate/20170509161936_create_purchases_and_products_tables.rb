@@ -7,7 +7,7 @@ class CreatePurchasesAndProductsTables < ActiveRecord::Migration[5.1]
     create_table(:products) do |t|
       t.string :name
       t.string :description
-      t.belongs_to(:purchase, index:true)
+      t.belongs_to(:purchase, index: true)
       t.decimal :price, precision: 10, scale: 2
       t.timestamps
     end
